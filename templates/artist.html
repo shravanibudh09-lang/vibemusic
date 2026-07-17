@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ artist_name }} — Vibe Music</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body data-page="artist" data-artist="{{ artist_name }}">
+
+  <div class="app">
+    {% include "_nav.html" %}
+
+    <a href="{{ url_for('artists_page') }}" class="back-link">&larr; All artists</a>
+
+    <section class="artist-header-box">
+      <h2 id="artistName">{{ artist_name }}</h2>
+      <p id="artistCount" class="subtitle"></p>
+    </section>
+
+    {% include "_player.html" %}
+
+    <section class="playlist-box">
+      <h2>Songs</h2>
+      <ul id="playlist"></ul>
+    </section>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

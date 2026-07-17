@@ -1,0 +1,12 @@
+<header>
+  <h1>🎵 Vibe Music</h1>
+  <p class="subtitle">Diploma Project — Flask + SQLite + HTML</p>
+  <nav class="main-nav">
+    <a href="{{ url_for('index') }}" class="{{ 'active' if active == 'home' else '' }}">Home</a>
+    <a href="{{ url_for('artists_page') }}" class="{{ 'active' if active == 'artists' else '' }}">Artists</a>
+    <a href="{{ url_for('favorites_page') }}" class="{{ 'active' if active == 'favorites' else '' }}">Favorites</a>
+  </nav>
+  {% if session.get('username') %}
+  <p class="account-bar">Signed in as <strong>{{ session['username'] }}</strong> · <a href="{{ url_for('logout') }}">Log out</a></p>
+  {% endif %}
+</header>

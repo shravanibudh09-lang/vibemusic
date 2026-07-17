@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Favorites — Vibe Music</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body data-page="favorites">
+
+  <div class="app">
+    {% include "_nav.html" %}
+
+    {% include "_player.html" %}
+
+    <section class="playlist-box">
+      <h2>Favorite Songs</h2>
+      <ul id="playlist"></ul>
+    </section>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

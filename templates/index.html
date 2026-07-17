@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vibe Music</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body data-page="home">
+
+  <div class="app">
+    {% include "_nav.html" %}
+
+    <!-- Upload form -->
+    <section class="upload-box">
+      <form id="uploadForm">
+        <input type="text" id="titleInput" placeholder="Song title (optional)">
+        <input type="text" id="artistInput" placeholder="Artist (optional)">
+        <label class="file-label">Audio file
+          <input type="file" id="fileInput" accept=".mp3,.wav,.ogg" required>
+        </label>
+        <label class="file-label">Cover image (optional)
+          <input type="file" id="coverInput" accept="image/*">
+        </label>
+        <button type="submit">Upload Song</button>
+      </form>
+      <p id="uploadStatus"></p>
+    </section>
+
+    {% include "_player.html" %}
+
+    <!-- Playlist -->
+    <section class="playlist-box">
+      <h2>Playlist</h2>
+      <ul id="playlist"></ul>
+    </section>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

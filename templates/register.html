@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create account — Vibe Music</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body data-page="register">
+
+  <div class="app auth-app">
+    <header>
+      <h1>🎵 Vibe Music</h1>
+      <p class="subtitle">Diploma Project — Flask + SQLite + HTML</p>
+    </header>
+
+    <section class="auth-box">
+      <h2>Create an account</h2>
+
+      {% if error %}
+        <p class="auth-error">{{ error }}</p>
+      {% endif %}
+
+      <form method="POST" action="{{ url_for('register') }}">
+        <input type="text" name="username" placeholder="Username" required autofocus>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="password" name="confirm" placeholder="Confirm password" required>
+        <button type="submit">Sign up</button>
+      </form>
+
+      <p class="auth-switch">Already have an account? <a href="{{ url_for('login') }}">Log in</a></p>
+    </section>
+  </div>
+
+</body>
+</html>
