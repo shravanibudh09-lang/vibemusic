@@ -4,13 +4,14 @@
 }
 
 body {
-  margin: 0;
-  background: linear-gradient(135deg, #1e1e2e, #2a2a3f);
-  color: #f0f0f0;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  padding: 40px 15px;
+    margin: 0;
+    background: url("/static/music-bg.png") no-repeat center center fixed;
+    background-size: cover;
+    color: #f0f0f0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 40px 15px;
 }
 
 .app {
