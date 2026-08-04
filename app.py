@@ -35,9 +35,14 @@ from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-UPLOAD_FOLDER = os.path.join(BASE_DIR, "static", "uploads")
+
+# On Render, attach a persistent disk mounted at /var/data (see deploy steps).
+# Locally, this env var is unset, so everything falls back to the project folder.
+DATA_DIR = os.environ.get("DATA_DIR", BASE_DIR)
+
+UPLOAD_FOLDER = os.path.join(DATA_DIR, "uploads")
 COVER_FOLDER = os.path.join(UPLOAD_FOLDER, "covers")
-DATABASE = os.path.join(BASE_DIR, "vibemusic.db")
+DATABASE = os.path.join(DATA_DIR, "vibemusic.db")
 ALLOWED_EXTENSIONS = {"mp3", "wav", "ogg"}
 ALLOWED_COVER_EXTENSIONS = {"png", "jpg", "jpeg", "gif", "webp"}
 
@@ -380,6 +385,9 @@ def uploaded_file(filename):
     return send_from_directory(app.config["UPLOAD_FOLDER"], filename)
 
 
-if __name__ == "__main__":
-    init_db()
-    app.run(debug=False, use_reloader=False)
+init_db()
+
+if __name__ == "_main_":
+  port = int(os.environ.get("PORT", 5000))
+debug = os.environ.get("FLASK_DEBUG", "false").lower() == "true"
+app.run(debug=debug, host="0.0.0.0", port=port)
