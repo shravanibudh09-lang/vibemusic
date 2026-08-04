@@ -387,7 +387,7 @@ def uploaded_file(filename):
 
 init_db()
 
-if __name__ == "_main_":
-  port = int(os.environ.get("PORT", 5000))
-debug = os.environ.get("FLASK_DEBUG", "false").lower() == "true"
-app.run(debug=debug, host="0.0.0.0", port=port)
+if _name_ == "_main_":
+    port = int(os.environ.get("PORT", 5000))
+    debug = os.environ.get("FLASK_DEBUG", "false").lower() == "true"
+    app.run(debug=debug, host="0.0.0.0", port=port)
